@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Quỳnh Giang ❤️</title>
+    <style>
+        /* Thiết lập cơ bản để hình nền tràn màn hình */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Ngăn cuộn trang */
+        }
+
+        /* Phần nền với hình ảnh nhiều chú mèo con siêu dễ thương */
+        .bg-image {
+            /* Link ảnh nền mèo cute chất lượng cao từ Unsplash */
+            background-image: url('https://images.unsplash.com/photo-1574158622682-e40e69881006?q=80&w=1920&auto=format&fit=crop');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* Làm mờ nền 4px để lời chúc nổi bật hơn */
+            filter: blur(4px);
+            -webkit-filter: blur(4px);
+            transform: scale(1.1); /* Tránh viền trắng khi blur */
+            position: fixed;
+            width: 100%;
+            z-index: -1;
+        }
+
+        /* Căn giữa nội dung chính */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Khung chứa lời chúc */
+        .container {
+            /* Nền trắng mờ (Semi-transparent) để nhìn xuyên thấu nền mèo */
+            background: rgba(255, 255, 255, 0.88);
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 450px;
+            width: 85%;
+            border: 2px solid rgba(255, 182, 193, 0.6); /* Viền hồng nhạt mờ */
+            backdrop-filter: blur(5px); /* Hiệu ứng kính mờ cho container */
+        }
+
+        h2 { color: #d63384; margin-bottom: 20px; font-weight: 700; margin-top: 0; }
+        p { color: #333; line-height: 1.8; font-size: 1.1rem; }
+        
+        /* Thiết kế ô nhập mật khẩu */
+        input {
+            padding: 12px;
+            width: 80%;
+            border: 2px solid #ffb3d1;
+            border-radius: 15px;
+            outline: none;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Thiết kế nút bấm */
+        button {
+            background: #ff4d94;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 148, 0.4);
+        }
+        
+        button:hover { 
+            background: #ff1a75; 
+            transform: scale(1.05);
+        }
+
+        /* Phần tin nhắn ban đầu bị ẩn */
+        #message {
+            display: none;
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* Hiệu ứng hiện hình tin nhắn mềm mại */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hiệu ứng trái tim và mèo rơi khi mở khóa thành công */
+        .heart {
+            position: fixed;
+            top: -10px;
+            color: #ff4d94;
+            font-size: 20px;
+            user-select: none;
+            z-index: 5;
+            animation: fall linear forwards;
+            pointer-events: none; /* Không cản trở việc click */
+        }
+
+        /* Hiệu ứng rơi và xoay */
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-image"></div>
+
+<div class="main-content">
+    <div class="container" id="box">
+        <div id="lock-screen">
+            <h2>🔒 Câu hỏi nhỏ 🐾</h2>
+            <p style="color: #666; font-weight: 500;">Một trong năm bông hoa đẹp nhất anh biết là?</p>
+            <input type="text" id="password" placeholder="Nhập tên loài hoa đó...">
+            <br>
+            <button onclick="checkPass()">Mở khóa trái tim ❤️</button>
+        </div>
+
+        <div id="message">
+            <h2 style="font-size: 1.8rem;">🌹 Happy Women's Day 🌹</h2>
+            <p>Chúc <b>Quỳnh Giang</b> ngày 8/3 vui vẻ và luôn xinh đẹp rạng rỡ, tự tin, kiên cường và tỏa sáng theo cách riêng của iem😘😘😘.</p>
+            <p>Cảm ơn em đã xuất hiện và mong rằng em sớm hé cánh cửa đó ra với anh nhe🥰🥰🥰</p>
+            <p style="font-size: 1.2rem; color: #ff85a2; margin-top: 25px;">🐱🐾🐱</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Hàm kiểm tra mật khẩu
+    function checkPass() {
+        // Lấy giá trị nhập vào, bỏ khoảng trắng và chuyển thành chữ thường
+        const pass = document.getElementById('password').value.trim().toLowerCase();
+
+        // Mật khẩu là "giang"
+        if (pass === 'giang') {
+            document.getElementById('lock-screen').style.display = 'none'; // Ẩn màn hình khóa
+            document.getElementById('message').style.display = 'block'; // Hiện lời chúc
+            
+            // Bắt đầu hiệu ứng mèo và trái tim rơi
+            startHearts();
+        } else {
+            // Thông báo nếu sai mật khẩu
+            alert('Vẫn chưa đúng rồi! Gợi ý: Đó là tên của người xinh đẹp nhất mà anh biết 😉');
+        }
+    }
+
+    // Hàm tạo hiệu ứng rơi
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        
+        // Ngẫu nhiên các icon trái tim và mèo
+        const types = ['❤️', '💖', '🐾', '🐱', '🌸', '✨'];
+        heart.innerHTML = types[Math.floor(Math.random() * types.length)];
+        
+        // Thiết lập vị trí và hiệu ứng ngẫu nhiên
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 15 + 'px'; // Kích thước ngẫu nhiên
+        heart.style.animationDuration = Math.random() * 3 + 3 + 's'; // Tốc độ ngẫu nhiên
+        heart.style.opacity = Math.random() * 0.8 + 0.2; // Độ mờ ngẫu nhiên
+        
+        document.body.appendChild(heart);
+        
+        // Xóa icon sau khi rơi xong
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    // Hàm bắt đầu hiệu ứng rơi liên tục
+    function startHearts() {
+        setInterval(createHeart, 250); // Tạo một icon mới mỗi 250ms
+    }
+</script>
+
+</body>
+</html>
